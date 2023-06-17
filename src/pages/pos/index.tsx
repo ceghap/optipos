@@ -101,6 +101,7 @@ const PosIndex = () => {
                       />
                     </CardHeader>
                     <CardContent className="p-2 flex-grow">
+                      <p className="text-xs">{d.SKU} <span>({d.stockCount})</span></p> 
                       <CardTitle className="text-base">{d.title}</CardTitle>
                       <CardDescription className="text-sm">
                         RM {d.price}
