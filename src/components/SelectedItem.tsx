@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Product } from "src/actions/product";
+import { Product } from '@prisma/client';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import Image from 'next/image'

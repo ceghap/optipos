@@ -2,7 +2,8 @@ import SelectedItem from "@/components/SelectedItem";
 import PosLayout from "@/components/layouts/PosLayout";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from 'react'
-import { fetchProducts, Product } from "src/actions/product";
+import { fetchProducts } from "src/actions/product";
+import { Product } from "@prisma/client";
 import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -13,7 +14,7 @@ const PosIndex = () => {
   const [selectedItem, setSelectedItem] = useState<Product[]>([])
   const [searchValue, setSearchValue] = useState<string>('')
   const { data, isLoading } = useQuery({ queryKey: ['products', searchValue], queryFn: () => fetchProducts(searchValue) })
-  const onAddItem = (id: number) => {
+  const onAddItem = (id: string) => {
 
     const item = data?.find(d => d.id === id);
 
@@ -25,7 +26,7 @@ const PosIndex = () => {
 
   }
 
-  const removeItem = (id: number) => {
+  const removeItem = (id: string) => {
     const indexToRemove = selectedItem.findIndex(item => item.id === id);
     if (indexToRemove > -1) {
       setSelectedItem([
