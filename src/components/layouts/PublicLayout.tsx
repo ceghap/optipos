@@ -9,7 +9,7 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="relative min-h-screen">
         <Navbar />
         <div className="">{children}</div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );
