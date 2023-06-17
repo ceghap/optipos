@@ -1,7 +1,7 @@
 import PublicLayout from "@/components/layouts/PublicLayout";
 import Head from "next/head";
 import Link from 'next/link'
-
+import {AiOutlineArrowRight} from 'react-icons/ai'
 export default function Home() {
 
 
@@ -25,8 +25,8 @@ export default function Home() {
                 <div>
                    
                   <Link href="pos">
-                    <div>
-                    -> Point of sales System
+                    <div className="flex items-center">
+                    <AiOutlineArrowRight className="mr-2" /> Point of sales System
                     </div>
                   </Link>
                 </div>

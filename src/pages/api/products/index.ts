@@ -17,6 +17,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       include: {
         categories: true,
       },
+      orderBy: {
+        title: 'asc' // Sort by title in ascending order. Use 'desc' for descending order.
+      }
     });
 
     res.status(200).json(products);
