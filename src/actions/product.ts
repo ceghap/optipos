@@ -1,3 +1,4 @@
+import { Product as PrismaProduct } from "@prisma/client";
 export interface Product {
   id: number,
   title: string,
@@ -14,7 +15,7 @@ export const fetchFakeProducts = async (): Promise<Product[]> => {
 }
 
 
-export const fetchProducts = async (searchValue: string): Promise<Product[]> => {
+export const fetchProducts = async (searchValue: string): Promise<PrismaProduct[]> => {
   const res = await fetch(`/api/products?title=${searchValue}`);
 
   return await res.json();

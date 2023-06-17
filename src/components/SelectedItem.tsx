@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Product } from "src/actions/product";
+import { Product } from '@prisma/client';
 
 
-const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id: number) => void }) => {
+const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id: string) => void }) => {
 	const [total, setTotal] = useState<number>(0)
 
 	useEffect(() => {

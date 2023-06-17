@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Hand } from "lucide-react";
 import { useState } from 'react'
 import { fetchProducts } from "src/actions/product";
-import { Product } from "src/actions/product";
+import { Product } from "@prisma/client";
 
 const PosIndex = () => {
 
@@ -14,7 +14,7 @@ const PosIndex = () => {
   
   const { data } = useQuery({ queryKey: ['products', searchValue], queryFn: () => fetchProducts(searchValue) })
 
-  const onAddItem = (id: number) => {
+  const onAddItem = (id: string) => {
 
     const item = data?.find(d => d.id === id);
 
@@ -26,7 +26,7 @@ const PosIndex = () => {
 
   }
 
-  const removeItem = (id:number) => {
+  const removeItem = (id:string) => {
 
     const newItem= selectedItem.filter((item: Product) => item.id !== id);
 
@@ -54,7 +54,9 @@ const PosIndex = () => {
                 </div>
                 <p className="w-48 text-ellipsis overflow-hidden whitespace-nowrap h-6">{d.title}</p>
                 <p className="font-bold text-lg">RM {d.price}</p>
-                <button className="px-8 py-3 w-full bg-yellow-400 font-semibold rounded dark:bg-gray-100 dark:text-gray-800" onClick={() => onAddItem(d.id)}>Add</button>
+                {d.stockCount > 0 && d.stockCount <= 5 && <p className="text-red-600">Last {d.stockCount}!</p> }
+                {d.stockCount < 1 && <p className="text-red-600">Not Available</p> }
+                <button disabled={d.stockCount < 1} className="px-8 py-3 w-full disabled:opacity-25 bg-yellow-400 font-semibold rounded dark:bg-gray-100 dark:text-gray-800" onClick={() => onAddItem(d.id)}>Add</button>
               </div>
             )}
 
