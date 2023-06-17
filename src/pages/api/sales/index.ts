@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../../prisma/client";
 import { Product, Sale } from "@prisma/client";
+import { sendDeductedProducts } from "src/actions/inventory";
 
 interface ProductWithQuantity extends Product {
     quantity: number;
@@ -51,6 +52,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     })
                 )
             );
+
+            if (process.env.OPTISTOCK_URL) {
+                const payload = reducedSelectedItems.map((i: ProductWithQuantity) => ({ sku: i.SKU ? i.SKU : 'NO-SKU', quantity: i.quantity }))
+                await sendDeductedProducts(payload);
+            }
+
 
             res.status(201).json({ sale });
         } catch (error) {
