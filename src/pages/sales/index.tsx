@@ -12,7 +12,7 @@ import { fetchSales } from "src/actions/sale";
 
 const Sales = () => {
     const [id, setId] = useState<string>('')
-    const { data } = useQuery({ queryKey: ['paginatedProducts', id], queryFn: () => fetchSales(id) })
+    const { data } = useQuery({ queryKey: ['sales', id], queryFn: () => fetchSales(id) })
     const columnHelper = createColumnHelper<Sale>()
 
 const columns = [
