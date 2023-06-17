@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "../components/ui/button";
 import Image from 'next/image'
 
-const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id: number) => void }) => {
+const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id: string) => void }) => {
 	const [total, setTotal] = useState<number>(0)
 
 	useEffect(() => {

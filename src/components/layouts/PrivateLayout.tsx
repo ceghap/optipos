@@ -11,7 +11,7 @@ const PrivateLayout = ({ children }: { children: React.ReactNode }) => {
           <Header />
           <div>
             <Sidebar />
-            <div className="format w-full p-4 md:ml-64">{children}</div>
+            <div className="format w-full p-4 md:pl-72  overflow-auto h-[calc(100vh-60px)]">{children}</div>
           </div>
         </>
       </div>
