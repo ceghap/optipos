@@ -9,10 +9,12 @@ import {
     useReactTable,
   } from '@tanstack/react-table'
 import { fetchProductPaginated } from "src/actions/product";
+import { syncProducts } from "src/actions/inventory";
 
 const Stock = () => {
     const [searchValue, setSearchValue] = useState<string>('')
     const { data } = useQuery({ queryKey: ['paginatedProducts', searchValue], queryFn: () => fetchProductPaginated(searchValue) })
+    const { isLoading, refetch } = useQuery({ queryKey: ['products'], queryFn: () => syncProducts(), enabled: false, })
     const columnHelper = createColumnHelper<Product>()
 
 const columns = [
@@ -55,8 +57,10 @@ const table = useReactTable({
     <PrivateLayout>
       <div className="flex justify-between mb-4 items-center">
         <h2 className="font-medium text-lg">Inventory</h2>
-        <button className="ml-2 px-8 py-3 text-white font-semibold rounded bg-green-500 dark:bg-gray-100 dark:text-gray-800">Sync with OptiStock</button>
+        <button onClick={()=>refetch()} className="ml-2 cursor-pointer px-8 py-3 text-white font-semibold rounded bg-green-500 dark:bg-gray-100 dark:text-gray-800">Sync with OptiStock</button>
       </div>
+
+      {/* {isLoading && <div className="absolute top-0 left-0 right-0 bottom-0"><div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div></div>} */}
 
      {data &&  
      <div className="overflow-x-auto">

@@ -20,3 +20,9 @@ export const fetchItems = async (): Promise<any> => {
 
     return await res.json();
 }
+
+export const syncProducts = async (): Promise<any> => {
+    const res = await fetch(`/api/inventory/sync/all`);
+
+    return await res.json();
+}

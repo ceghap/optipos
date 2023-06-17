@@ -15,9 +15,9 @@ export default async function handler(
 
     try {
         for (const item of items) {
-            const { name, sku, image, quantity } = item;
-            const product = await prisma.product.findFirst({
-                where: { title: name },
+            const { sku, image, quantity } = item;
+            const product = await prisma.product.findUnique({
+                where: { SKU: sku },
             });
 
             if (product) {
