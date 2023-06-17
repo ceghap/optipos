@@ -53,7 +53,10 @@ const table = useReactTable({
 
     return (
     <PrivateLayout>
-      <div>Stock</div>
+      <div className="flex justify-between mb-4 items-center">
+        <h2 className="font-medium text-lg">Inventory</h2>
+        <button className="ml-2 px-8 py-3 text-white font-semibold rounded bg-green-500 dark:bg-gray-100 dark:text-gray-800">Sync with OptiStock</button>
+      </div>
 
      {data &&  
      <div className="overflow-x-auto">

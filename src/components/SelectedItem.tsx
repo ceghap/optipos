@@ -4,16 +4,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "../components/ui/button";
 import Image from 'next/image'
 
-const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id: string) => void }) => {
-	const [total, setTotal] = useState<number>(0)
-
-	useEffect(() => {
-		let totalPrice = items.reduce((accumulator, currentItem) => {
-			return accumulator + currentItem.price;
-		}, 0);
-
-		setTotal(Number(totalPrice.toFixed(2)))
-	}, [items])
+const SelectedItem = ({ total, items, removeItem, handlePay }: { total: number, items: Product[], removeItem: (id: string) => void, handlePay: () =>  void }) => {
+	
 
 	let uniqueItems = [...new Set(items)];
 
@@ -53,7 +45,7 @@ const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id
 				<p className=" my-4">Total amount:
 					<span className="font-semibold">RM {total}</span>
 				</p>
-				<Button className="ml-2 px-8 py-3 font-semibold rounded bg-green-500 dark:bg-gray-100 dark:text-gray-800">
+				<Button onClick={handlePay} disabled={uniqueItems.length === 0} className="ml-2 px-8 disabled:opacity-40 py-3 font-semibold rounded bg-green-500 dark:bg-gray-100 dark:text-gray-800">
 					Pay
 				</Button>
 			</div>
