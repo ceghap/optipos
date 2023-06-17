@@ -18,8 +18,8 @@ const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id
 	let uniqueItems = [...new Set(items)];
 
 	return (
-		<div className='flex flex-col justify-between h-full px-2'>
-			<div className='overflow-auto h-[calc(100vh-60px)] px-2' >
+		<div className='flex flex-col justify-between'>
+			<div className='overflow-auto h-[calc(100vh-120px)] p-2' >
 				{uniqueItems.length === 0 ? <p className='mb-4'>No product selected</p> :
 					uniqueItems.map((i: Product) => (
 						<Card key={i.id} className="relative flex flex-col">
@@ -49,13 +49,11 @@ const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id
 						</Card>
 					))}
 			</div>
-			<div className="flex flex-col space-x-4 ">
-				<p className="ml-4 mb-4">Total amount:
+			<div className="flex flex-col space-x-4 p-2">
+				<p className=" my-4">Total amount:
 					<span className="font-semibold">RM {total}</span>
 				</p>
-				<Button
-					className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-				>
+				<Button className="ml-2 px-8 py-3 font-semibold rounded bg-green-500 dark:bg-gray-100 dark:text-gray-800">
 					Pay
 				</Button>
 			</div>

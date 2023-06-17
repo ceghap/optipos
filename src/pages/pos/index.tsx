@@ -41,9 +41,9 @@ const PosIndex = () => {
 
   return (
     <PosLayout>
-      <div className="container mx-auto p-4 grid grid-cols-4 gap-4">
+      <div className="px-4 mx-auto grid grid-cols-4">
         <div className="col-span-3">
-          <div className="w-full mb-4">
+          <div className="w-full mb-4 pt-4">
             <input
               className="w-full p-2 border-2 border-gray-300 bg-white h-8 px-4 pr-12 rounded-lg text-sm focus:outline-none"
               type="search"
@@ -52,7 +52,7 @@ const PosIndex = () => {
               onChange={handleSearchChange}
             />
           </div>
-          <div className="w-full grid grid-cols-3 gap-4">
+          <div className="w-full grid grid-cols-3 gap-4 overflow-auto h-[calc(100vh-80px)]">
             {
               isLoading ?
                 Array(10).fill(0).map((_, idx) => <Skeleton key={idx} className="h-32" />) : // display 10 skeletons while data is loading
@@ -85,13 +85,6 @@ const PosIndex = () => {
         </div>
         <div className="col-span-1">
           <SelectedItem items={selectedItem} removeItem={removeItem} />
-          <div className="sticky bottom-0 p-4">
-            {/* <Button
-              className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            >
-              Pay
-            </Button> */}
-          </div>
         </div>
       </div>
     </PosLayout>
