@@ -20,3 +20,9 @@ export const fetchProducts = async (searchValue: string): Promise<PrismaProduct[
 
   return await res.json();
 }
+
+export const fetchProductPaginated = async (searchValue: string, page: number = 1, size: number = 10): Promise<PrismaProduct[]> => {
+  const res = await fetch(`/api/products/paginated?title=${searchValue}&page=${page}&size=${size}`);
+
+  return await res.json();
+}
