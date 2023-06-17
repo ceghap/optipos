@@ -78,6 +78,7 @@ model Product {
  categories Category[] @relation("CategoryToProduct")
  saleItems  SaleItem[]
  stockCount Int       @default(10)
+ SKU        String? @unique
 }
 
 model Sale {

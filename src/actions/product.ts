@@ -14,8 +14,8 @@ export const fetchFakeProducts = async (): Promise<Product[]> => {
 }
 
 
-export const fetchProducts = async (): Promise<Product[]> => {
-  const res = await fetch('/api/products');
+export const fetchProducts = async (searchValue: string): Promise<Product[]> => {
+  const res = await fetch(`/api/products?title=${searchValue}`);
 
   return await res.json();
 }

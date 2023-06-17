@@ -25,7 +25,7 @@ const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id
 									<p className="text-sm dark:text-gray-400">Classic</p>
 								</div>
 								<div className="text-right">
-									<p className="text-lg font-semibold">{i.price}</p>
+									<p className="text-lg font-semibold">RM {i.price}</p>
 								</div>
 							</div>
 							<div className="flex text-sm divide-x">
@@ -47,7 +47,7 @@ const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id
 			</ul>
 			<div className="space-y-1 text-right">
 				<p>Total amount:
-					<span className="font-semibold">{total}</span>
+					<span className="font-semibold">RM {total}</span>
 				</p>
 
 			</div>
