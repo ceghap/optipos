@@ -18,7 +18,7 @@ const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id
 			<div className='overflow-auto h-[calc(100vh-60px)] px-2' >
 				<ul className="flex flex-col divide-y divide-gray-700">
 					{items?.length === 0 && <p className='mb-4'>No product selected</p>}
-					{items.map((i: Product) => <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
+					{items.map((i: Product) => <li key={i.id} className="flex flex-col py-6 sm:flex-row sm:justify-between">
 						<div className="flex w-full space-x-2 sm:space-x-4">
 							<img className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src={i.image} alt="Polaroid camera" />
 							<div className="flex flex-col justify-between w-full pb-4">
