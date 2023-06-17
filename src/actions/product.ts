@@ -7,8 +7,15 @@ export interface Product {
   image: string
 }
 
-export const fetchProducts = async (): Promise<Product[]> => {
+export const fetchFakeProducts = async (): Promise<Product[]> => {
   const res = await fetch('https://fakestoreapi.com/products');
+
+  return await res.json();
+}
+
+
+export const fetchProducts = async (): Promise<Product[]> => {
+  const res = await fetch('/api/products');
 
   return await res.json();
 }

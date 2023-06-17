@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../../prisma/client";
-import { fetchProducts, Product as FetchProduct } from "../../../actions/product";
+import { fetchFakeProducts, Product as FetchProduct } from "../../../actions/product";
 
 
 const createProducts = async (products: FetchProduct[]) => {
@@ -37,7 +37,7 @@ export default async function handler(
     res: NextApiResponse
 ) {
     try {
-        const products: FetchProduct[] = await fetchProducts();
+        const products: FetchProduct[] = await fetchFakeProducts();
         await createProducts(products);
 
         res.status(200).json({ message: 'Products created successfully' });

@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../../prisma/client";
-import { fetchProducts, Product as FetchProduct } from "../../../actions/product";
+import { fetchFakeProducts, Product as FetchProduct } from "../../../actions/product";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-    const products: FetchProduct[] = await fetchProducts(); // Fetch products from the external API
+    const products: FetchProduct[] = await fetchFakeProducts(); // Fetch products from the external API
 
     // Loop through the products and create or update categories in the database
     for (const product of products) {
