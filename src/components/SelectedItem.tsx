@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from 'react'
-import {Product} from '../pages/pos/index'
+import React, { useEffect, useState } from 'react'
+import { Product } from "src/actions/product";
 
-const SelectedItem = ({items, removeItem}: {items: Product[], removeItem: (id: number) => void}) => {
+
+const SelectedItem = ({ items, removeItem }: { items: Product[], removeItem: (id: number) => void }) => {
 	const [total, setTotal] = useState<number>(0)
 
-	useEffect(()=>{
+	useEffect(() => {
 		const totalPrice = items.reduce((accumulator, currentItem) => {
 			return accumulator + currentItem.price;
-		  }, 0);
+		}, 0);
 
-		  setTotal(Number(totalPrice.toFixed(2)))
-	},[items])
+		setTotal(Number(totalPrice.toFixed(2)))
+	}, [items])
 	return (
 		<>
 			<ul className="flex flex-col divide-y divide-gray-700">
-				{items.map((i: Product) => 				<li className="flex flex-col py-6 sm:flex-row sm:justify-between">
+				{items.map((i: Product) => <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
 					<div className="flex w-full space-x-2 sm:space-x-4">
 						<img className="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src={i.image} alt="Polaroid camera" />
 						<div className="flex flex-col justify-between w-full pb-4">
@@ -48,10 +49,10 @@ const SelectedItem = ({items, removeItem}: {items: Product[], removeItem: (id: n
 				<p>Total amount:
 					<span className="font-semibold">{total}</span>
 				</p>
-				
+
 			</div>
 			<div className="flex justify-end space-x-4">
-			
+
 				<button type="button" className="px-6 py-2 border rounded-md bg-green-500 w-full text-white">
 					<span className="sr-only sm:not-sr-only">Pay</span>
 				</button>

@@ -2,23 +2,8 @@ import SelectedItem from "@/components/SelectedItem";
 import PosLayout from "@/components/layouts/PosLayout";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from 'react'
-
-export interface Product {
-  id: number,
-  title: string,
-  price: number,
-  category: string,
-  description: string,
-  image: string
-}
-
-const fetchProducts = async (): Promise<Product[]> => {
-  const res = await fetch('https://fakestoreapi.com/products');
-
-  return await res.json();
-}
-
-
+import { fetchProducts } from "src/actions/product";
+import { Product } from "src/actions/product";
 
 const PosIndex = () => {
 

@@ -63,3 +63,34 @@ enum Role {
   USER
   ADMIN
 }
+
+model Category {
+  id        String @id @default(cuid())
+  name      String @unique
+  products  Product[] @relation("CategoryToProduct")
+}
+
+model Product {
+ id         String    @id @default(cuid())
+ title      String
+ image      String
+ price      Float
+ categories Category[] @relation("CategoryToProduct")
+ saleItems  SaleItem[]
+}
+
+model Sale {
+  id         String   @id @default(cuid())
+  timestamp  DateTime @default(now())
+  total      Float
+  items      SaleItem[]
+}
+
+model SaleItem {
+  id       String  @id @default(cuid())
+  quantity Int
+  product  Product @relation(fields: [productId], references: [id])
+  sale     Sale    @relation(fields: [saleId], references: [id])
+  productId String
+  saleId    String
+}
