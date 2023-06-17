@@ -29,6 +29,18 @@ export default function Home() {
                     <AiOutlineArrowRight className="mr-2" /> Point of sales System
                     </div>
                   </Link>
+
+                  <Link href="stock">
+                    <div className="flex items-center">
+                    <AiOutlineArrowRight className="mr-2" /> Stock management
+                    </div>
+                  </Link>
+
+                  <Link href="sales">
+                    <div className="flex items-center">
+                    <AiOutlineArrowRight className="mr-2" /> Sales histories
+                    </div>
+                  </Link>
                 </div>
                 
               </div>
