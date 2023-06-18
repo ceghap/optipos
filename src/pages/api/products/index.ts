@@ -37,6 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         where: {
           title: {
             contains: title ? title.toString().trim() : undefined,
+            mode: 'insensitive',
           },
         },
         include: {
