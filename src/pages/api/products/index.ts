@@ -36,7 +36,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const products: Product[] = await prisma.product.findMany({
         where: {
           title: {
-            contains: title ? title.toString() : undefined,
+            contains: title ? title.toString().trim() : undefined,
           },
         },
         include: {
